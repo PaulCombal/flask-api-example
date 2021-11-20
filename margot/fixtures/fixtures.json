@@ -1,0 +1,19 @@
+[
+    {
+        "model": "margot.database.models.User",
+        "records": [
+            {
+                "id": 1,
+                "username": "admin",
+                "email": "admin@test.org",
+                "password": "admin"
+            },
+            {
+                "id": 2,
+                "username": "user",
+                "email": "user@test.org",
+                "password": "user"
+            }
+        ]
+    }
+]
