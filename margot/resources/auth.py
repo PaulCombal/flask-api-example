@@ -31,6 +31,8 @@ class LoginApi(Resource):
         if not authorized:
             return {'error': 'invalid_credentials'}, 401
         
-        expires = datetime.timedelta(days=7)
+        seconds_in_7_days = 7 * 24 * 60 * 60
+        expires = datetime.timedelta(seconds=seconds_in_7_days)
         access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-        return {'token': access_token}, 200
+        cookie = {'Set-Cookie': f'token={access_token}; expires={seconds_in_7_days}; HttpOnly' }
+        return {'message': 'ok'}, 200, cookie

@@ -7,4 +7,4 @@ def initialize_routes(api : Api):
     api.add_resource(SignupApi, '/api/auth/signup')
     api.add_resource(LoginApi, '/api/auth/login')
 
-    api.add_resource(HospitalApi, '/api/hospital')
+    api.add_resource(HospitalApi, '/api/hospital/<int:id>', '/api/hospital')

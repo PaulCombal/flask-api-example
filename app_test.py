@@ -1,7 +1,7 @@
 import unittest
 
 from margot.app import app
-from margot.database.models import User
+from margot.database.models import User, Hospital
 from margot.database.db import db
 
 from flask_fixtures import FixturesMixin
@@ -18,8 +18,6 @@ class TestAll(unittest.TestCase, FixturesMixin):
 
 
     # Specify the fixtures file(s) you want to load.
-    # Change the list below to ['authors.yaml'] if you created your fixtures
-    # file using YAML instead of JSON.
     fixtures = ['fixtures.json']
 
     # Specify the Flask app and db we want to use for this set of tests
@@ -41,6 +39,14 @@ class TestAll(unittest.TestCase, FixturesMixin):
         db.session.commit()
         assert User.query.filter_by(password='admin').first() is None
 
+    
+
+    def test_hospital_creation(self):
+        hospitals = Hospital.query.all()
+        assert len(hospitals) == Hospital.query.count() == 1
+
+
+
 
     def setUp(self):
         db.create_all()
@@ -48,4 +54,3 @@ class TestAll(unittest.TestCase, FixturesMixin):
     def tearDown(self):
         db.session.remove()
         db.drop_all()
-

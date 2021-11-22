@@ -15,5 +15,15 @@
                 "password": "user"
             }
         ]
+    },
+    {
+        "model": "margot.database.models.Hospital",
+        "records": [
+            {
+                "id": 1,
+                "name": "Hopital standard",
+                "address": "8 rue Jacques Dubois"
+            }
+        ]
     }
 ]
